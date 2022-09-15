@@ -1,3 +1,19 @@
 .menu {
-  text-align: center;
+  max-width: 100vw;
+  max-height: 100vh;
+
+  &__buttons {
+    width: calc(100vw - 90px);
+    height: 100px;
+    margin: 10px;
+
+    display:flex;
+    justify-content: center;
+  }
+
+  &__content {
+    width: calc(100vw - 90px);
+    height: calc(100vh - 190px);
+    margin: 10px;
+  }
 }

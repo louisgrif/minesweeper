@@ -1,12 +1,11 @@
+
 import './style.scss';
+import Tile from './Tile';
 
-const Board = ({ }) => {
-
-  return (
-    <div className="board">
+const Board = ({ }) => (
+  <div className="board">
       
-    </div>
-  );
-}
+  </div>
+);
 
 export default Board;
