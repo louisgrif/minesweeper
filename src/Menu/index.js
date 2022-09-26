@@ -2,20 +2,23 @@ import { useState, Fragment } from 'react';
 
 import './style.scss';
 import Option from './Option';
-import Button from './Button';
-import Board from '../Components/Board';
-import Leaderboards from '../Components/Leaderboards';
+import Board from '../components/Board';
+import Leaderboards from '../components/Leaderboards';
 
-import backSVG from './Assets/back.svg';
-import settingsSVG from './Assets/settings.svg';
-import pauseSVG from './Assets/pause.svg';
-import resetSVG from './Assets/reset.svg';
-import leaderboardsSVG from './Assets/leaderboards.svg';
+import backSVG from '../assets/back.svg';
+import settingsSVG from '../assets/settings.svg';
+import pauseSVG from '../assets/pause.svg';
+import resetSVG from '../assets/reset.svg';
+import leaderboardsSVG from '../assets/leaderboards.svg';
 
 const Menu = () => {
   const [gameState, setGameState] = useState(0);
   const [modalState, setModalState] = useState(0);
 
+  const Button = ({ icon, onClick }) => (
+    <img className="menu__buttons__button" src={icon} onClick={()=>onClick()} alt={"?"} /> 
+  );
+  
   return (
     <Fragment> {
       gameState === 0 ? (
@@ -34,7 +37,7 @@ const Menu = () => {
       ) :
       gameState === 1 ? (
         <div className="menu">
-          <div className="menu__buttons">
+          <div className="buttons">
             <Button icon={settingsSVG} />
             <Button icon={leaderboardsSVG} onClick={()=>setGameState(2)} />
           </div>
@@ -44,7 +47,7 @@ const Menu = () => {
         </div>
       ) : (
       <div className="menu">
-        <div className="menu__buttons">
+        <div className="buttons">
           <Button icon={backSVG} onClick={()=>setGameState(1)} />
           <Button icon={settingsSVG} />
         </div>

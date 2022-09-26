@@ -3,17 +3,26 @@
   max-height: 100vh;
 
   &__buttons {
-    width: calc(100vw - 90px);
-    height: 100px;
-    margin: 10px;
-
     display:flex;
     justify-content: center;
+
+    &__button {
+      margin: 10px;
+      border-radius: 5px;
+  
+      height: 50px;
+      width: 50px;
+  
+      background-color: #ddd;
+      &:hover {
+          cursor: pointer;
+      }
+    }
   }
 
   &__content {
-    width: calc(100vw - 90px);
-    height: calc(100vh - 190px);
-    margin: 10px;
+    width: auto;
+    height: auto;
+    
   }
 }
