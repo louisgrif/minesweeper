@@ -8,7 +8,7 @@ const Board = ({ }) => {
   const dispatch = useDispatch();
 
   const Tile = ({ id, src }) => (
-    <img className="board__row__tile" src={src} alt={"?"}
+    <img className="board__row__tile" draggable="false" src={src} alt={"?"}
       onClick={()=>dispatch(revealTile({id: id, src: src}))}
       onContextMenu={()=>dispatch(flagTile({id: id, src: src}))} />
   );
