@@ -1,0 +1,26 @@
+<svg width="80" height="80" xmlns="http://www.w3.org/2000/svg">
+    <path d="M 30,10
+           L 50,10 50,20 30,20
+           M 30,60
+           L 50,60 50,70 30,70"
+           fill="darkslategrey"/>
+    <path d="M 30,10
+           L 50,10 50,20 30,20
+           M 30,60
+           L 50,60 50,70 30,70"
+           fill="darkslategrey"
+           transform="rotate(120 40 40)"/>
+    <path d="M 30,10
+           L 50,10 50,20 30,20
+           M 30,60
+           L 50,60 50,70 30,70"
+           fill="darkslategrey"
+           transform="rotate(60 40 40)"/>
+    <path d="M 40,15
+           A 25 25 0 1 1 40 65
+           A 25 25 0 1 1 40 15
+           M 40,50
+           A 10 10 0 1 0 40 30
+           A 10 10 0 1 0 40 50"
+           fill="darkslategrey"/>
+</svg>

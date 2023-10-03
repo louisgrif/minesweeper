@@ -1,0 +1,29 @@
+.menu {
+  max-width: 100vw;
+  max-height: 100vh;
+
+  &__buttons {
+    display:flex;
+    justify-content: center;
+
+    &__button {
+      margin: 10px;
+      border-radius: 5px;
+  
+      height: 50px;
+      width: 50px;
+  
+      background-color: #ddd;
+      &:hover {
+          cursor: pointer;
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    justify-content: center;
+    width: auto;
+    height: auto;
+  }
+}

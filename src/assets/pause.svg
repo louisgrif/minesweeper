@@ -1,0 +1,7 @@
+<svg width="80" height="80" xmlns="http://www.w3.org/2000/svg">
+       <path d="M 20,15
+           L 35,15 35,65 20,65
+           M 45,15
+           L 60,15 60,65 45,65"
+           fill="darkblue"/>
+</svg>

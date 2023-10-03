@@ -1,0 +1,5 @@
+<svg width="80" height="80" xmlns="http://www.w3.org/2000/svg">
+    <path d="M 40,10
+           L 55,40 70,10 60,70 20,70 10,10 25,40"
+           fill="darkgoldenrod"/>
+</svg>
