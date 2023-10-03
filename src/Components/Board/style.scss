@@ -1,14 +1,18 @@
 .board {
-    text-align: center;
+    display: inline;
+    height: fit-content;
+    width: fit-content;
     &__row {
         display: flex;
-        width: 100%;
         justify-content: center;
+        height: fit-content;
+        width: fit-content;
         &__tile {
             min-width: 37px;
             min-height: 37px;
             max-width: 37px;
             max-height: 37px;
+            
         }
     }
 }

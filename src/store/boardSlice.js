@@ -16,8 +16,9 @@ export const boardSlice = createSlice({
   name: "board",
   initialState: {
     timeStarted: 0,
-    numSquares: 0,
-    lostGame: 0,
+    finalTime: 0,
+    tilesLeft: 0,
+    minesLeft: 0,
     boardData: [
       [
         {
@@ -135,17 +136,24 @@ export const boardSlice = createSlice({
         }
       }
       state.boardData = newBoard;
+      state.timeStarted = 0;
+      state.minesLeft = numMines;
+      state.tilesLeft = numX * numY - numMines;
     },
     flagTile: (state, action) => {
-      if(action.payload.src === flagSVG || action.payload.src === defaultSVG) {
+      if(state.finalTime === -1 && (action.payload.src === flagSVG || action.payload.src === defaultSVG)) {
         const row = state.boardData.at(Math.floor(action.payload.id));
         const tile = row[row.findIndex((tile) => tile.id === action.payload.id)];
-        if(tile.src === defaultSVG) tile.src = flagSVG;
-        else if(tile.src === flagSVG) tile.src = defaultSVG;
+        if(tile.src === defaultSVG && state.minesLeft > 0) { tile.src = flagSVG; state.minesLeft--}
+        else if(tile.src === flagSVG) { tile.src = defaultSVG; state.minesLeft++}
       }
     },
     revealTile: (state, action) => {
-      if(action.payload.src === defaultSVG) {
+      if(state.timeStarted === 0) {
+        state.timeStarted = new Date().getTime();
+        state.finalTime = -1;
+      }
+      if(state.finalTime === -1 && action.payload.src === defaultSVG) {
         const row = state.boardData.at(Math.floor(action.payload.id));
         const tile = row[row.findIndex((tile) => tile.id === action.payload.id)];
         if(tile.number === 0) {
@@ -179,6 +187,7 @@ export const boardSlice = createSlice({
               else if(toCheck.number === 5) toCheck.src = fiveSVG;
               else if(toCheck.number === 6) toCheck.src = sixSVG;
               else toCheck.src = sevenSVG;
+              state.tilesLeft--;
             }
           }
         }
@@ -191,16 +200,19 @@ export const boardSlice = createSlice({
         else if(tile.number === 7) tile.src = sevenSVG;
         else {
           tile.src = mineSVG;
+          state.finalTime = new Date().getTime() - state.timeStarted;
+        }
+        if(tile.number > 0 ) state.tilesLeft--;
+        if(state.tilesLeft === 0) {
+          state.finalTime = new Date().getTime() - state.timeStarted;
+          alert("swept in " + state.finalTime / 1000 + " seconds")
         }
       }
-    },
-    pauseTime: (state, action) => {
-
     },
   },
 });
 
 // Export your action creators (which match reducer names) here
-export const { genBoard, flagTile, revealTile, pauseTime, } = boardSlice.actions;
+export const { genBoard, flagTile, revealTile, } = boardSlice.actions;
 
 export default boardSlice.reducer;
